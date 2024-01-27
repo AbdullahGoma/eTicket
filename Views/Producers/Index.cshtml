@@ -1,0 +1,53 @@
+﻿@* Define model *@
+@model IEnumerable<Producer>
+
+@* Define ViewData *@
+
+@{
+    ViewData["Title"] = "List Of Producers";
+}
+
+
+@* Write Code *@
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+
+        <table class="table">
+            <thead>
+                <tr class="text-center">
+                    <th>@Html.DisplayNameFor(model => model.ProfilePictureURL)</th>
+                    <th>@Html.DisplayNameFor(model => model.FullName)</th>
+                    <th>@Html.DisplayNameFor(model => model.Bio)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="align-middle">
+                            <img class="rounded-circle" src="@item.ProfilePictureURL" alt="@item.FullName" style="max-width: 150px" />
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.FullName)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.Bio)
+                        </td>
+                        <td class="align-middle">
+                            <a class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i>Edit </a> |
+                            <a class="btn btn-outline-info"><i class="bi bi-eye"></i>Details </a> |
+                            <a class="btn btn-danger text-whitea"><i class="bi bi-trash"></i>Delete </a>
+                            @* @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id=item.Id }) *@
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+
+    </div>
+</div>
